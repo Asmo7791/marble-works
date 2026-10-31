@@ -1,41 +1,71 @@
 # Marble Works
 
-Sort glowing marbles into the capsule of their colour. A puzzle game for ages 5 to 11.
+[![Test](https://github.com/Asmo7791/marble-works/actions/workflows/test.yml/badge.svg)](https://github.com/Asmo7791/marble-works/actions/workflows/test.yml)
+[![Publish web app](https://github.com/Asmo7791/marble-works/actions/workflows/pages.yml/badge.svg)](https://github.com/Asmo7791/marble-works/actions/workflows/pages.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**Play:** https://asmo7791.github.io/marble-works/
+Sort glowing marbles into the capsule of their colour. A calm, quick puzzle game for ages 5 to 11 that plays on phones, tablets and computers, online or off.
+
+### [▶ Play now](https://asmo7791.github.io/marble-works/) · [Download for desktop](https://github.com/Asmo7791/marble-works/releases/latest)
+
+<p align="center">
+  <img src="docs/screenshots/menu.png" width="250" alt="Main menu with level grid">
+  <img src="docs/screenshots/level-intro.png" width="250" alt="Level intro card">
+  <img src="docs/screenshots/gameplay.png" width="250" alt="Marbles riding the track into colour capsules">
+</p>
+
+## Features
+
+- **Easy to learn:** tap a pipe, marbles roll down the track, and each capsule only takes its own colour.
+- **Colour-blind friendly:** every colour also has its own shape (circle, triangle, square, diamond, star).
+- **Shake and Return powers** for when the hopper gets stuck.
+- **Stars for speed**, plus a gold star for near-perfect clears.
+- **Works offline** and saves progress on the device. No accounts, no ads, no tracking.
+
+See [How to play](docs/HOW-TO-PLAY.md) for the full rules.
 
 ## Install it as an app
 
-- **iPhone / iPad (Safari):** open the link, tap Share, then **Add to Home Screen**.
-- **Android (Chrome):** open the link, tap the menu, then **Install app** (or **Add to Home screen**).
-- **Windows / Mac / Chromebook (Chrome or Edge):** open the link and click the install icon in the address bar.
-
-Once installed it runs full screen and works offline. Progress is saved on the device.
-
-## Desktop downloads
-
-Windows, Mac and Linux builds are on the [Releases](../../releases) page.
-They are not code-signed, so the first launch shows a warning:
-
-- **Windows:** click **More info**, then **Run anyway**.
-- **Mac:** right-click the app, choose **Open**, then **Open** again.
-
-## How it's put together
-
-| Path | What it is |
+| Device | How |
 | --- | --- |
-| `index.html` | The whole game (one file, no build step) |
-| `manifest.webmanifest`, `sw.js`, `icons/` | Makes it installable and playable offline |
-| `fonts/` | Bundled fonts so nothing loads from the internet |
-| `desktop/` | Electron wrapper for the desktop apps |
-| `.github/workflows/pages.yml` | Publishes the game to GitHub Pages on every push to `main` |
-| `.github/workflows/desktop.yml` | Builds the desktop apps when a tag like `v1.0.0` is pushed |
+| iPhone / iPad | Open the [game link](https://asmo7791.github.io/marble-works/) in Safari, tap **Share**, then **Add to Home Screen**. |
+| Android | Open the link in Chrome, tap **⋮**, then **Install app**. |
+| Windows / Mac / Chromebook | Open the link in Chrome or Edge and click the install icon in the address bar. |
+| Desktop app | Download from [Releases](https://github.com/Asmo7791/marble-works/releases/latest): `.exe` for Windows, `.dmg` for Mac, `.AppImage` for Linux. |
 
-### Making changes
+The desktop downloads are not code-signed yet, so the first launch shows a warning. On Windows click **More info → Run anyway**. On Mac right-click the app, choose **Open**, then **Open** again.
 
-1. Edit `index.html` and open it in a browser to test.
-2. Bump `VERSION` in `sw.js` so installed copies update.
-3. Push to `main`; the site updates in a minute or two.
-4. For new desktop builds, bump `version` in `desktop/package.json` and push a tag: `git tag v1.0.1 && git push --tags`.
+## Project layout
 
-To run the desktop app locally: `cd desktop && npm install && npm start`.
+```
+web/            The game itself (one HTML file) plus app manifest, offline worker, icons and fonts
+desktop/        Electron wrapper that packages web/ as Windows, Mac and Linux apps
+tests/          Browser smoke tests (Playwright)
+scripts/        Local server and screenshot generator
+docs/           How to play, screenshots
+.github/        CI workflows, issue and pull request templates
+```
+
+## Development
+
+Needs [Node.js](https://nodejs.org) 20 or newer.
+
+```sh
+npm install
+npx playwright install chromium   # first time only
+npm start                         # play at http://localhost:8080
+npm test                          # run the smoke tests
+npm run screenshots               # refresh docs/screenshots
+```
+
+Desktop app: `cd desktop && npm install && npm start`.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how changes and releases work.
+
+## Privacy
+
+Marble Works collects nothing. See [PRIVACY.md](PRIVACY.md).
+
+## License
+
+[MIT](LICENSE) © 2026 Kai

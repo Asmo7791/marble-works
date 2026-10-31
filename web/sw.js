@@ -1,6 +1,6 @@
 // Offline support: cache the game shell, serve from cache, refresh in the background.
 // Bump VERSION whenever files change so installed copies pick up the update.
-const VERSION = 'marble-works-v1';
+const VERSION = 'marble-works-v1.0.0';
 const FILES = [
   './',
   'index.html',

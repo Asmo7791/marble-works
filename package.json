@@ -1,0 +1,21 @@
+{
+  "name": "marble-works-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marble Works: sort glowing marbles into the capsule of their colour. A puzzle game for ages 5 to 11.",
+  "type": "module",
+  "license": "MIT",
+  "repository": "https://github.com/Asmo7791/marble-works",
+  "homepage": "https://asmo7791.github.io/marble-works/",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

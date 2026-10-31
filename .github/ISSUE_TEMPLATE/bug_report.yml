@@ -1,0 +1,37 @@
+name: Bug report
+description: Something in the game doesn't work right
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: input
+    id: level
+    attributes:
+      label: Level
+      placeholder: e.g. Level 4
+  - type: dropdown
+    id: version
+    attributes:
+      label: How were you playing?
+      options:
+        - Web browser
+        - Installed from the browser (home screen / app)
+        - Windows app
+        - Mac app
+        - Linux app
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      placeholder: e.g. iPad, Safari 18
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or anything else

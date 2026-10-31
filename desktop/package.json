@@ -7,7 +7,7 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "copy-web": "node -e \"const fs=require('fs');fs.rmSync('app',{recursive:true,force:true});fs.mkdirSync('app');for(const f of ['index.html','manifest.webmanifest','fonts','icons'])fs.cpSync('../'+f,'app/'+f,{recursive:true})\"",
+    "copy-web": "node -e \"const fs=require('fs');fs.rmSync('app',{recursive:true,force:true});fs.cpSync('../web','app',{recursive:true,filter:s=>!s.endsWith('sw.js')})\"",
     "start": "npm run copy-web && electron .",
     "dist": "npm run copy-web && electron-builder --publish never"
   },
@@ -61,5 +61,7 @@
     },
     "publish": null
   },
-  "repository": "https://github.com/Asmo7791/marble-works"
+  "repository": "https://github.com/Asmo7791/marble-works",
+  "license": "MIT",
+  "homepage": "https://asmo7791.github.io/marble-works/"
 }

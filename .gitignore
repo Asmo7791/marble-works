@@ -1,4 +1,5 @@
 node_modules/
 desktop/app/
 desktop/dist/
+test-results/
 .DS_Store
