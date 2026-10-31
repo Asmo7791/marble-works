@@ -1,6 +1,7 @@
 name: Build desktop apps
 
 # Runs when a version tag like v1.0.0 is pushed, or by hand from the Actions tab.
+# Either way the builds are attached to a release named after desktop/package.json's version.
 on:
   push:
     tags: ['v*']
@@ -36,9 +37,14 @@ jobs:
             desktop/dist/*.dmg
             desktop/dist/*.AppImage
           if-no-files-found: error
-      - if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v2
+      - name: Read version
+        id: version
+        shell: bash
+        run: echo "tag=v$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+      - uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: Marble Works ${{ steps.version.outputs.tag }}
           files: |
             desktop/dist/*.exe
             desktop/dist/*.dmg
